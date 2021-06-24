@@ -37,7 +37,7 @@ namespace MRPAPP
         /// </summary>
         /// <param name="email"></param>
         /// <returns></returns>
-        internal static bool IsValidEmail(string email)
+        public static bool IsValidEmail(string email)
         {
             return Regex.IsMatch(email, @"[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?");
         }

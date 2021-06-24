@@ -11,17 +11,18 @@ namespace MRPAPP.Logic
     public class DataAccess
     {
         // setting 테이블에서 데이터 가져오기
-        internal static List<Settings> GetSettings()
+        // 단위테스트할때는 public으로 수정
+        public static List<Settings> GetSettings()
         {
             List<Model.Settings> settings;
 
             using (var ctx = new MRPEntities())
                 settings = ctx.Settings.ToList(); // select
-            
+
             return settings;
         }
 
-        internal static int SetSettings(Settings item)
+        public static int SetSettings(Settings item)
         {
             using (var ctx = new MRPEntities())
             {
@@ -30,7 +31,7 @@ namespace MRPAPP.Logic
             }
         }
 
-        internal static int DelSettings(Settings item)
+        public static int DelSettings(Settings item)
         {
             using (var ctx = new MRPEntities())
             {
