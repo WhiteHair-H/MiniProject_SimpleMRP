@@ -18,6 +18,7 @@ using MRPAPP.View;
 using MRPAPP.View.Account;
 using MRPAPP.View.Store;
 using MRPAPP.View.Setting;
+using MRPAPP.View.Schedule;
 
 namespace MRPAPP
 {
@@ -96,6 +97,19 @@ namespace MRPAPP
             try
             {
                 ActiveControl.Content = new SettingList();
+            }
+            catch (Exception ex)
+            {
+                Commons.LOGGER.Error($"예외발생 BtnStore_Click : {ex}");
+                this.ShowMessageAsync("예외", $"예외발생 : {ex}");
+            }
+        }
+
+        private void BtnSchedule_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                ActiveControl.Content = new ScheduleList();
             }
             catch (Exception ex)
             {

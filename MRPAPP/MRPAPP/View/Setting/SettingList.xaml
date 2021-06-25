@@ -83,7 +83,7 @@
             <!--신규-->
             <Button x:Name="BtnNew" 
                     Height="40" Width="90" Content="신규" FontSize="14" 
-                    Background="CornflowerBlue"
+                    Background="CornflowerBlue" Foreground="white"
                     Margin="10, 0" Click="BtnNew_Click">
                 <Button.ContentTemplate>
                     <DataTemplate>
@@ -97,7 +97,7 @@
             <!--입력-->
             <Button x:Name="BtnInsert" 
                     Height="40" Width="90" Content="입력" FontSize="14" 
-                    Background="CornflowerBlue"
+                    Background="CornflowerBlue" Foreground="white"
                     Margin="0, 0 , 10 , 0" Click="BtnInsert_Click">
                 <Button.ContentTemplate>
                     <DataTemplate>
@@ -110,7 +110,7 @@
             </Button>
             <!--수정-->
             <Button x:Name="BtnUpdate" 
-                    Background="CornflowerBlue"
+                    Background="CornflowerBlue" Foreground="white"
                     Height="40" Width="90" Content="수정" FontSize="14" Click="BtnUpdate_Click">
                 <Button.ContentTemplate>
                     <DataTemplate>
@@ -149,7 +149,7 @@
                 <Label Content="코드명"></Label>
                 <TextBox x:Name="TxtSearch" Width="200" Margin="8" KeyDown="TxtSearch_KeyDown"></TextBox>
                 <Button x:Name="BtnSearch" Content="검색" Margin="8"
-                        Width="80" FontSize="14" 
+                        Width="80" FontSize="14"  Foreground="white"
                         Background="CornflowerBlue" Click="BtnSearch_Click"></Button>
             </StackPanel>
             
