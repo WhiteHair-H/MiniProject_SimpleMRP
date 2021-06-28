@@ -19,6 +19,8 @@ using MRPAPP.View.Account;
 using MRPAPP.View.Store;
 using MRPAPP.View.Setting;
 using MRPAPP.View.Schedule;
+using MRPAPP.View.Process;
+using System.Configuration;
 
 namespace MRPAPP
 {
@@ -36,14 +38,23 @@ namespace MRPAPP
         {
 
         }
-
+        // 오른쪽 상단에 "부산공장" 삽입
         private void MetroWindow_Activated(object sender, EventArgs e)
         {
-            /*if (Commons.LOGINED_USER != null)
-                BtnLoginedId.Content = $"{Commons.LOGINED_USER.UserEmail} ({Commons.LOGINED_USER.UserName})";*/
+            Commons.PLANTCODE = ConfigurationManager.AppSettings.Get("PlantCode");
+            
+            // 코드에 맞는 "부산공장" 데이터 가져오는 문
+            try
+            {
+                var plantName = Logic.DataAccess.GetSettings().Where(c => c.BasicCode.Equals(Commons.PLANTCODE)).FirstOrDefault().CodeName;
+                BtnPlantName.Content = plantName;
+            }
+            catch (Exception ex)
+            {
+                Commons.LOGGER.Error($"예외발생 : {ex}");
+            }
         }
-
-
+        // 종료이벤트
         private async void BtnExit_Click(object sender, RoutedEventArgs e)
         {
             var result = await this.ShowMessageAsync("종료", "프로그램을 종료하시겠습니까?",
@@ -52,46 +63,7 @@ namespace MRPAPP
             if (result == MessageDialogResult.Affirmative)
                 Application.Current.Shutdown();
         }
-
-        private async void BtnAccount_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                ActiveControl.Content = new MyAccount();
-            }
-            catch (Exception ex)
-            {
-                Commons.LOGGER.Error($"예외발생 BtnAccount_Click : {ex}");
-                await this.ShowMessageAsync("예외", $"예외발생 : {ex}");
-            }
-        }
-
-        private async void BtnUser_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                //ActiveControl.Content = new UserList();
-            }
-            catch (Exception ex)
-            {
-                Commons.LOGGER.Error($"예외발생 BtnUser_Click : {ex}");
-                await this.ShowMessageAsync("예외", $"예외발생 : {ex}");
-            }
-        }
-
-        private void BtnStore_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                ActiveControl.Content = new StoreList();
-            }
-            catch (Exception ex)
-            {
-                Commons.LOGGER.Error($"예외발생 BtnStore_Click : {ex}");
-                this.ShowMessageAsync("예외", $"예외발생 : {ex}");
-            }
-        }
-
+        // 설정이벤트
         private void BtnSetting_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -104,7 +76,7 @@ namespace MRPAPP
                 this.ShowMessageAsync("예외", $"예외발생 : {ex}");
             }
         }
-
+        // 공정계획 이벤트
         private void BtnSchedule_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -116,6 +88,24 @@ namespace MRPAPP
                 Commons.LOGGER.Error($"예외발생 BtnStore_Click : {ex}");
                 this.ShowMessageAsync("예외", $"예외발생 : {ex}");
             }
+        }
+        // 모니터링 이벤트
+        private void BtnMonitoring_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                ActiveControl.Content = new ProcessView();
+            }
+            catch (Exception ex)
+            {
+                Commons.LOGGER.Error($"예외발생 BtnStore_Click : {ex}");
+                this.ShowMessageAsync("예외", $"예외발생 : {ex}");
+            }
+        }
+        // 리포트 이벤트
+        private void BtnReport_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
