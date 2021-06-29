@@ -28,7 +28,8 @@ namespace MRPAPP
         private void MetroWindow_Activated(object sender, EventArgs e)
         {
             Commons.PLANTCODE = ConfigurationManager.AppSettings.Get("PlantCode");
-            
+            Commons.FACILITYID = ConfigurationManager.AppSettings.Get("FacilityID");
+
             // 코드에 맞는 "부산공장" 데이터 가져오는 문
             try
             {

@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -62,7 +63,7 @@ namespace DiviceSubApp
         private void Timer_Tick(object sender, EventArgs e)
         {
             LblResult.Text = sw.Elapsed.Seconds.ToString();
-            if (sw.Elapsed.Seconds >= 3)
+            if (sw.Elapsed.Seconds >= 2) // 2초 대기 후
             {
                 sw.Stop();
                 sw.Reset();
@@ -83,13 +84,12 @@ namespace DiviceSubApp
                 using (var conn = new SqlConnection(connectionString))// using있을시 자동으로 종료됨
                 {
                     var prcResult = correctData["PRC_MSG"] == "OK" ? 1 : 0;
-                    string strUpQry = $"UPDATE Process_DEV " +
-                                      $"    SET PrcEndTime = '{DateTime.Now.ToString("HH:mm:ss")}' " +
-                                      $"      , PrcResult = '{prcResult}' " +
+                    string strUpQry = $"UPDATE Process " +
+                                      $"    SET PrcResult = '{prcResult}' " +
                                       $"      , ModDate = '{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}' " +
                                       $"      , ModID = '{"SYS"}' " +
                                       $"  WHERE PrcIdx = " +
-                                      $" (SELECT TOP 1 PrcIdx FROM Process_DEV ORDER BY PrcIdx DESC)";
+                                      $" (SELECT TOP 1 PrcIdx FROM Process ORDER BY PrcIdx DESC)";
                     try
                     {
                         conn.Open();
@@ -104,7 +104,6 @@ namespace DiviceSubApp
                         UpdateText($">>>>> DB ERROR : {ex.Message} ");
                     }
                 }
-
             }
             iotData.Clear();// 데이터 모두 삭제
         }
