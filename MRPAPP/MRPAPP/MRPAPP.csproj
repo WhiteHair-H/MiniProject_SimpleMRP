@@ -523,6 +523,7 @@
       <DependentUpon>MRPModel.edmx</DependentUpon>
       <LastGenOutput>MRPModel.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resources\profile.jpg" />
     <Resource Include="View\Process\belt.png" />
     <Resource Include="Resources\belt.png" />
     <Resource Include="View\Process\sensor.png" />
