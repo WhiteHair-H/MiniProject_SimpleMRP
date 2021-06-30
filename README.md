@@ -12,7 +12,6 @@
 --------------------------
 
 ## MRPPicture
-####[BackContent](#Contents)
 ### Intro MRP Menu
 #### 1. Home
 ![MainMenu](https://github.com/WhiteHair-H/MiniProject_SimpleMRP/blob/main/Player%26Picture/Picture/MainMenu.png "MainMenu")
@@ -24,7 +23,7 @@
 ![Process](https://github.com/WhiteHair-H/MiniProject_SimpleMRP/blob/main/Player%26Picture/Picture/Process.png "Process")
 
 ## MRPPlayer
-####[BackContent](#Contents)
+
 ### Intro MRP Function
 #### 1. Setting
 ![MoviePalyer1](https://github.com/WhiteHair-H/MiniProject_SimpleMRP/blob/main/Player%26Picture/Player/MRP_Setting.gif "MoviePalyer1")
