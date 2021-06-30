@@ -10,6 +10,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
+using System.Windows.Threading;
 using uPLibrary.Networking.M2Mqtt;
 using uPLibrary.Networking.M2Mqtt.Messages;
 
@@ -39,6 +40,7 @@ namespace MRPAPP.View.Process
             InitializeComponent();
         }
 
+        // 메인 페이지 로드 이벤트
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
             try
@@ -66,6 +68,7 @@ namespace MRPAPP.View.Process
                     LblSchAmount.Content = $"{currSchedules.SchAmount} 개"; // 계획수량
                     BtnStartProcess.IsEnabled = true; // 버튼 활성화
 
+                    UpdateData();
                     InitConnectMqttBroker(); // 공정 시작시 MQTT 브로커에 연결
                 }
             }
@@ -76,10 +79,16 @@ namespace MRPAPP.View.Process
             }
         }
 
+        // MQTTClient 전역변수 설정
         MqttClient client;
+        // Timer 전역변수 설정
         Timer timer = new Timer();
+        // Stopwatch 전역변수 설정
         Stopwatch sw = new Stopwatch();
+        // 금일데이터 변수설정
+        Dictionary<string, string> currentData = new Dictionary<string, string>();
 
+        // MQTTBroker 연결이벤트
         private void InitConnectMqttBroker()
         {
             var brokerAddress = IPAddress.Parse("210.119.12.90"); // MQTT broker iP
@@ -88,60 +97,113 @@ namespace MRPAPP.View.Process
 
             // 연결
             client.Connect("Monitor");
-            client.Subscribe(new string[] { "factory1/machine1/data/" }, new byte[] { MqttMsgBase.QOS_LEVEL_AT_MOST_ONCE});
-            
+            client.Subscribe(new string[] { "factory1/machine1/data/" }, new byte[] { MqttMsgBase.QOS_LEVEL_AT_MOST_ONCE });
 
-
+            timer = new Timer();
             timer.Enabled = true;
             timer.Interval = 1000;
             timer.Elapsed += Timer_Elapsed;
             timer.Start();
         }
 
+        // 타이머 설정 이벤트
         private void Timer_Elapsed(object sender, ElapsedEventArgs e)
         {
             if (sw.Elapsed.Seconds >= 2)// 2초 대기후 일처리
             {
                 sw.Stop();
                 sw.Reset();
-                MessageBox.Show(currentData["PRC_MSG"]);
+                //MessageBox.Show(currentData["PRC_MSG"]);
+                // Timer도 하나의 스레드이기에 오류가 발생
+                // 해결방법 -> Dispatcher사용
+                if (currentData["PRC_MSG"] == "OK")
+                {
+                    Dispatcher.Invoke(DispatcherPriority.Normal, new Action(delegate
+                    {
+                        Product.Fill = new SolidColorBrush(Colors.Green);
+                    }));
+                }
+                else if (currentData["PRC_MSG"] == "FAIL")
+                {
+                    Dispatcher.Invoke(DispatcherPriority.Normal, new Action(delegate
+                    {
+                        Product.Fill = new SolidColorBrush(Colors.Red);
+                    }));
+                }
+
+                Dispatcher.Invoke(DispatcherPriority.Normal, new Action(delegate
+               {
+                   UpdateData();
+               }));
             }
         }
 
-        Dictionary<string, string> currentData = new Dictionary<string, string>();
+        // 성공률 , 실패율 이벤트
+        private void UpdateData()
+        {
+            // 오늘의 프로세스 데이터 
 
+            // 성공수량
+            var prcOkAmount = Logic.DataAccess.GetProcess().Where(p => p.Schidx.Equals(currSchedules.SchIdx)).Count(p => p.PrcResult.Equals(true));
+            // 실패수량
+            var prcFAILAmount = Logic.DataAccess.GetProcess().Where(p => p.Schidx.Equals(currSchedules.SchIdx))
+                .Where(p => p.PrcResult.Equals(false)).Count();
 
+            // 성공률
+            var prcOKRate = ((double)prcOkAmount / (double)currSchedules.SchAmount) * 100;
+            // 실패율
+            var prcFAILRate = ((double)prcFAILAmount / (double)currSchedules.SchAmount) * 100;
+
+            LblPrcOKAmount.Content = $"{prcOkAmount} 개";
+            LblPrcFAILAmount.Content = $"{prcFAILAmount} 개";
+            LblPrcOKRate.Content = $"{prcOKRate} %";
+            LblPrcFAILRate.Content = $"{prcFAILRate} %";
+        }
+
+        // OK와 FAIL를 통한 스톱워치 실행 이벤트 
         private void Client_MqttMsgPublishReceived(object sender, uPLibrary.Networking.M2Mqtt.Messages.MqttMsgPublishEventArgs e)
         {
             var message = Encoding.UTF8.GetString(e.Message);
-            var currentData = JsonConvert.DeserializeObject<Dictionary<string, string>>(message);
+            currentData = JsonConvert.DeserializeObject<Dictionary<string, string>>(message);
 
-            sw.Stop();
-            sw.Reset();
-            sw.Start();
+            //MQTT스레드와 WPF UI 스레드가 겹쳐서 오류가 생김
+            // if문을 걸어서 확인작업
+            if (currentData["PRC_MSG"] == "OK" || currentData["PRC_MSG"] == "FAIL")
+            {
+                sw.Stop();
+                sw.Reset();
+                sw.Start();
 
-            StartSensorAnimation();
+                StartSensorAnimation();
+            }
         }
 
+        // 센서 애니메이션 시작 이벤트
         private void StartSensorAnimation()
         {
-            DoubleAnimation ba = new DoubleAnimation();
-            ba.From = 1; // 이미지 보임
-            ba.To = 0; // 이미지 안보임
-            ba.Duration = TimeSpan.FromSeconds(2);
-            ba.AutoReverse = true;
-            // ba.RepeatBehavior = RepeatBehavior.Forever;
+            Dispatcher.Invoke(DispatcherPriority.Normal, new Action(delegate
+            {
+                // MQTT스레드와 WPF UI 스레드가 겹쳐서 오류가 생김
+                // 해결방법 -> Dispatcher를 통해서 스레드 겹침을 해결할 수 있음
+                DoubleAnimation ba = new DoubleAnimation();
+                ba.From = 1; // 이미지 보임
+                ba.To = 0; // 이미지 안보임
+                ba.Duration = TimeSpan.FromSeconds(2);
+                ba.AutoReverse = true;
+                // ba.RepeatBehavior = RepeatBehavior.Forever;
 
-            Sensor.BeginAnimation(Canvas.OpacityProperty, ba);
-
+                Sensor.BeginAnimation(Canvas.OpacityProperty, ba);
+            }));
         }
 
+        // 버튼클릭시 프로세스 시작 이벤트
         private void BtnStartProcess_Click(object sender, RoutedEventArgs e)
         {
-            InsertProcessData();
-            StartAnimation(); // HMI 애니메이션 실행
+            if (InsertProcessData())
+                StartAnimation(); // HMI 애니메이션 실행
         }
 
+        // 데이터 삽입 이벤트
         private bool InsertProcessData()
         {
             var item = new Model.Process();
@@ -180,6 +242,7 @@ namespace MRPAPP.View.Process
 
         }
 
+        // PRC코드 입력 이벤트
         private string GetProcessCodeFromDB()
         {
             var prefix = "PRC";
@@ -204,8 +267,11 @@ namespace MRPAPP.View.Process
             return resultCode;
 
         }
+        
+        // 기어와 제품 애니메이션 시작 이벤트
         private void StartAnimation()
         {
+            Product.Fill = new SolidColorBrush(Colors.Gray);
             // Gear 애니메이션 속성
             DoubleAnimation da = new DoubleAnimation();
             da.From = 0;
@@ -230,6 +296,14 @@ namespace MRPAPP.View.Process
             //ma.AutoReverse = true;
 
             Product.BeginAnimation(Canvas.LeftProperty, ma);
+        }
+
+        // 자원해제 이벤트
+        private void Page_Unloaded(object sender, RoutedEventArgs e)
+        {
+            // 자원해제
+            if (client.IsConnected) client.Disconnect();
+            timer.Dispose();
         }
     }
 }

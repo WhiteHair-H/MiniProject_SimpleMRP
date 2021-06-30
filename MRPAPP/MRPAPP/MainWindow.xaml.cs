@@ -7,6 +7,7 @@ using MRPAPP.View.Setting;
 using MRPAPP.View.Schedule;
 using MRPAPP.View.Process;
 using System.Configuration;
+using MRPAPP.View.Report;
 
 namespace MRPAPP
 {
@@ -92,7 +93,15 @@ namespace MRPAPP
         // 리포트 이벤트
         private void BtnReport_Click(object sender, RoutedEventArgs e)
         {
-
+            try
+            {
+                ActiveControl.Content = new ReportView();
+            }
+            catch (Exception ex)
+            {
+                Commons.LOGGER.Error($"예외발생 BtnStore_Click : {ex}");
+                this.ShowMessageAsync("예외", $"예외발생 : {ex}");
+            }
         }
     }
 }

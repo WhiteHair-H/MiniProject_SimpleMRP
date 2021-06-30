@@ -1,16 +1,17 @@
 ﻿<Page 
-    x:Class="MRPAPP.View.Account.MyAccount"
+    x:Class="MRPAPP.View.Report.ReportView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
     xmlns:oxy="http://oxyplot.org/wpf"
-    xmlns:local="clr-namespace:MRPAPP.View.Account"
+    xmlns:local="clr-namespace:MRPAPP.View.Report"
     mc:Ignorable="d" 
     d:DesignHeight="630" d:DesignWidth="1200"
     Title="ReportView" Loaded="Page_Loaded">
     <Page.Resources>
-        <Style TargetType="Label"><!-- {x:Type Label} -->
+        <Style TargetType="Label">
+            <!-- {x:Type Label} -->
             <Setter Property="FontSize" Value="14" />
             <Setter Property="FontWeight" Value="Bold" />
             <Setter Property="VerticalContentAlignment" Value="Center" />
@@ -35,15 +36,15 @@
             <ColumnDefinition Width="1*" />
             <ColumnDefinition Width="210" />
         </Grid.ColumnDefinitions>
-    
+
         <!-- 제목입력 시작 -->
         <Label Grid.Row="0" Grid.Column="1" Content="리포트" FontSize="26" FontWeight="ExtraBold"
                VerticalContentAlignment="Bottom" HorizontalContentAlignment="Left" />
         <!-- 제목입력 끝 -->
-        
+
         <!-- 버튼영역 시작 -->
         <!-- 버튼영역 끝 -->
-        
+
         <!-- 컨텐츠영역 시작 -->
         <Grid Grid.Row="1" Grid.Column="1" Margin="5">
             <Grid.RowDefinitions>
@@ -59,7 +60,7 @@
                         Width="80" FontSize="14" Foreground="white"
                         Background="CornflowerBlue" Click="BtnSearch_Click"></Button>
             </StackPanel>
-                
+
             <!--날짜별로 계획수량, 성공개수, 실패개수-->
             <Grid Grid.Row="1">
                 <!--차트-->
@@ -71,7 +72,7 @@
                     </oxy:Plot.Series>
                 </oxy:Plot>
             </Grid>
-            
+
         </Grid>
         <!-- 컨텐츠영역 끝 -->
     </Grid>
