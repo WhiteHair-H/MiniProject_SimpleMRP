@@ -31,7 +31,7 @@
 #### 2. Process
 ![MoviePalyer2](https://github.com/WhiteHair-H/MiniProject_SimpleMRP/blob/main/Player%26Picture/Player/MRP_Process.gif "MoviePalyer2")
 
-#### 3. Schedules
+#### 4. ~ ING
 ![MoviePalyer3](https://github.com/WhiteHair-H/MiniProject_SimpleMRP/blob/main/Player%26Picture/Player/MRP%EC%9E%91%EC%97%85.gif "MoviePalyer3")
 
 
