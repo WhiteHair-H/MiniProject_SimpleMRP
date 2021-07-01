@@ -92,11 +92,22 @@ namespace MRPAPP.View.Report
             }
         }
 
+        // 날짜가 빠져있거나 , StartDate가 EndDate보다 최신이면 검색하면 안되게 하는 이벤트
         private bool IsValidInputs()
         {
             var result = true;
 
-            // 검증은 내일
+            if (DtpStartDate.SelectedDate == null || DtpEndDate.SelectedDate == null)
+            {
+                Commons.ShowMessageAsync("검색", "검색할 일정을 선택하세요");
+                result = false;
+            }
+            if (DtpStartDate.SelectedDate > DtpEndDate.SelectedDate)
+            {
+                Commons.ShowMessageAsync("검색", "시작일자가 종료일자보다 최신일 수 없습니다");
+                result = false;
+            }
+
 
             return result;
         }
