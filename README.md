@@ -24,14 +24,14 @@
 #### 2. Setting
 <p align='left'>
   <a href="https://github.com/WhiteHair-H/MiniProject_SimpleMRP/blob/main/Player%26Picture/Picture/Setting.png">
-    <img src="https://github.com/WhiteHair-H/MiniProject_SimpleMRP/blob/main/Player%26Picture/Picture/Setting.png " width="40%" height="40%"/>
+    <img src="https://github.com/WhiteHair-H/MiniProject_SimpleMRP/blob/main/Player%26Picture/Picture/Setting.png " width="70%" height="60%"/>
   </a>
 </p>
 
 #### 3. Schedule
 <p align='left'>
   <a href="https://github.com/WhiteHair-H/MiniProject_SimpleMRP/blob/main/Player%26Picture/Picture/schedule.png">
-    <img src="https://github.com/WhiteHair-H/MiniProject_SimpleMRP/blob/main/Player%26Picture/Picture/schedule.png " width="40%" height="40%"/>
+    <img src="https://github.com/WhiteHair-H/MiniProject_SimpleMRP/blob/main/Player%26Picture/Picture/schedule.png " width="70%" height="60%"/>
   </a>
 </p>
 
@@ -39,14 +39,14 @@
 #### 4. Process
 <p align='left'>
   <a href="https://github.com/WhiteHair-H/MiniProject_SimpleMRP/blob/main/Player%26Picture/Picture/Process.png">
-    <img src="https://github.com/WhiteHair-H/MiniProject_SimpleMRP/blob/main/Player%26Picture/Picture/Process.png " width="40%" height="40%"/>
+    <img src="https://github.com/WhiteHair-H/MiniProject_SimpleMRP/blob/main/Player%26Picture/Picture/Process.png " width="70%" height="60%"/>
   </a>
 </p>
 
 #### 5. Report
 <p align='left'>
   <a href="https://github.com/WhiteHair-H/MiniProject_SimpleMRP/blob/main/Player%26Picture/Picture/Report.png">
-    <img src="https://github.com/WhiteHair-H/MiniProject_SimpleMRP/blob/main/Player%26Picture/Picture/Report.png " width="40%" height="40%"/>
+    <img src="https://github.com/WhiteHair-H/MiniProject_SimpleMRP/blob/main/Player%26Picture/Picture/Report.png " width="70%" height="60%"/>
   </a>
 </p>
 
@@ -57,7 +57,7 @@
 
 <p align='left'>
   <a href="https://github.com/WhiteHair-H/MiniProject_SimpleMRP/blob/main/Player%26Picture/Player/MRP_Setting.gif">
-    <img src="https://github.com/WhiteHair-H/MiniProject_SimpleMRP/blob/main/Player%26Picture/Player/MRP_Setting.gif " width="40%" height="40%"/>
+    <img src="https://github.com/WhiteHair-H/MiniProject_SimpleMRP/blob/main/Player%26Picture/Player/MRP_Setting.gif " width="70%" height="60%"/>
   </a>
 </p>
 
@@ -65,7 +65,7 @@
 
 <p align='left'>
   <a href="https://github.com/WhiteHair-H/MiniProject_SimpleMRP/blob/main/Player%26Picture/Player/MRP_Schedule.gif">
-    <img src="https://github.com/WhiteHair-H/MiniProject_SimpleMRP/blob/main/Player%26Picture/Player/MRP_Schedule.gif " width="40%" height="40%"/>
+    <img src="https://github.com/WhiteHair-H/MiniProject_SimpleMRP/blob/main/Player%26Picture/Player/MRP_Schedule.gif " width="70%" height="60%"/>
   </a>
 </p>
 
@@ -73,7 +73,7 @@
 
 <p align='left'>
   <a href="https://github.com/WhiteHair-H/MiniProject_SimpleMRP/blob/main/Player%26Picture/Player/MRP_Process.gif">
-    <img src="https://github.com/WhiteHair-H/MiniProject_SimpleMRP/blob/main/Player%26Picture/Player/MRP_Process.gif " width="40%" height="40%"/>
+    <img src="https://github.com/WhiteHair-H/MiniProject_SimpleMRP/blob/main/Player%26Picture/Player/MRP_Process.gif " width="70%" height="60%"/>
   </a>
 </p>
 
@@ -82,7 +82,7 @@
 
 <p align='left'>
   <a href="https://github.com/WhiteHair-H/MiniProject_SimpleMRP/blob/main/Player%26Picture/Player/MRP_Report.gif">
-    <img src="https://github.com/WhiteHair-H/MiniProject_SimpleMRP/blob/main/Player%26Picture/Player/MRP_Report.gif " width="40%" height="40%"/>
+    <img src="https://github.com/WhiteHair-H/MiniProject_SimpleMRP/blob/main/Player%26Picture/Player/MRP_Report.gif " width="70%" height="60%"/>
   </a>
 </p>
 
