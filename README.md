@@ -14,33 +14,75 @@
 ## MRPPicture
 ### Intro MRP Menu
 #### 1. Home
-![MainMenu](https://github.com/WhiteHair-H/MiniProject_SimpleMRP/blob/main/Player%26Picture/Picture/MainMenu.png "MainMenu")
+<p align='left'>
+  <a href="https://github.com/WhiteHair-H/MiniProject_SimpleMRP/blob/main/Player%26Picture/Picture/MainMenu.png">
+    <img src="https://github.com/WhiteHair-H/MiniProject_SimpleMRP/blob/main/Player%26Picture/Picture/MainMenu.png " width="40%" height="40%"/>
+  </a>
+</p>
+
 
 #### 2. Setting
-![Setting](https://github.com/WhiteHair-H/MiniProject_SimpleMRP/blob/main/Player%26Picture/Picture/Setting.png "Setting")
+<p align='left'>
+  <a href="https://github.com/WhiteHair-H/MiniProject_SimpleMRP/blob/main/Player%26Picture/Picture/Setting.png">
+    <img src="https://github.com/WhiteHair-H/MiniProject_SimpleMRP/blob/main/Player%26Picture/Picture/Setting.png " width="40%" height="40%"/>
+  </a>
+</p>
 
 #### 3. Schedule
-![Process](https://github.com/WhiteHair-H/MiniProject_SimpleMRP/blob/main/Player%26Picture/Picture/schedule.png "Process")
+<p align='left'>
+  <a href="https://github.com/WhiteHair-H/MiniProject_SimpleMRP/blob/main/Player%26Picture/Picture/schedule.png">
+    <img src="https://github.com/WhiteHair-H/MiniProject_SimpleMRP/blob/main/Player%26Picture/Picture/schedule.png " width="40%" height="40%"/>
+  </a>
+</p>
+
 
 #### 4. Process
-![Process](https://github.com/WhiteHair-H/MiniProject_SimpleMRP/blob/main/Player%26Picture/Picture/Process.png "Process")
+<p align='left'>
+  <a href="https://github.com/WhiteHair-H/MiniProject_SimpleMRP/blob/main/Player%26Picture/Picture/Process.png">
+    <img src="https://github.com/WhiteHair-H/MiniProject_SimpleMRP/blob/main/Player%26Picture/Picture/Process.png " width="40%" height="40%"/>
+  </a>
+</p>
 
 #### 5. Report
-![Process](https://github.com/WhiteHair-H/MiniProject_SimpleMRP/blob/main/Player%26Picture/Picture/Report.png "Process")
+<p align='left'>
+  <a href="https://github.com/WhiteHair-H/MiniProject_SimpleMRP/blob/main/Player%26Picture/Picture/Report.png">
+    <img src="https://github.com/WhiteHair-H/MiniProject_SimpleMRP/blob/main/Player%26Picture/Picture/Report.png " width="40%" height="40%"/>
+  </a>
+</p>
 
 ## MRPPlayer
 
 ### Intro MRP Function
 #### 1. Setting
-![MoviePalyer1](https://github.com/WhiteHair-H/MiniProject_SimpleMRP/blob/main/Player%26Picture/Player/MRP_Setting.gif "MoviePalyer1")
+
+<p align='left'>
+  <a href="https://github.com/WhiteHair-H/MiniProject_SimpleMRP/blob/main/Player%26Picture/Player/MRP_Setting.gif">
+    <img src="https://github.com/WhiteHair-H/MiniProject_SimpleMRP/blob/main/Player%26Picture/Player/MRP_Setting.gif " width="40%" height="40%"/>
+  </a>
+</p>
 
 #### 2. Schedule
-![MoviePalyer2](https://github.com/WhiteHair-H/MiniProject_SimpleMRP/blob/main/Player%26Picture/Player/MRP_Schedule.gif "MoviePalyer2")
+
+<p align='left'>
+  <a href="https://github.com/WhiteHair-H/MiniProject_SimpleMRP/blob/main/Player%26Picture/Player/MRP_Schedule.gif">
+    <img src="https://github.com/WhiteHair-H/MiniProject_SimpleMRP/blob/main/Player%26Picture/Player/MRP_Schedule.gif " width="40%" height="40%"/>
+  </a>
+</p>
 
 #### 3. Process
-![MoviePalyer3](https://github.com/WhiteHair-H/MiniProject_SimpleMRP/blob/main/Player%26Picture/Player/MRP_Process.gif "MoviePalyer3")
+
+<p align='left'>
+  <a href="https://github.com/WhiteHair-H/MiniProject_SimpleMRP/blob/main/Player%26Picture/Player/MRP_Process.gif">
+    <img src="https://github.com/WhiteHair-H/MiniProject_SimpleMRP/blob/main/Player%26Picture/Player/MRP_Process.gif " width="40%" height="40%"/>
+  </a>
+</p>
+
 
 #### 4. Report
-![MoviePalyer4](https://github.com/WhiteHair-H/MiniProject_SimpleMRP/blob/main/Player%26Picture/Player/MRP_Report.gif "MoviePalyer4")
 
+<p align='left'>
+  <a href="https://github.com/WhiteHair-H/MiniProject_SimpleMRP/blob/main/Player%26Picture/Player/MRP_Report.gif">
+    <img src="https://github.com/WhiteHair-H/MiniProject_SimpleMRP/blob/main/Player%26Picture/Player/MRP_Report.gif " width="40%" height="40%"/>
+  </a>
+</p>
 
