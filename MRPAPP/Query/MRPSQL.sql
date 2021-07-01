@@ -40,3 +40,5 @@ SELECT  sch.SchIdx ,sch.PlantCode ,
 			GROUP BY smr.Schidx, smr.PrcDate
 	) AS prc
 	ON sch.SchIdx = prc.Schidx
+WHERE sch.PlantCode = 'PC010002'
+  AND prc.PrcDate BETWEEN '2021-06-29' AND '2021-07-01'

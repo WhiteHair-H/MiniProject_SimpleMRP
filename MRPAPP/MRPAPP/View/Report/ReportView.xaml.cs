@@ -1,6 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace MRPAPP.View.Report
 {
@@ -19,8 +23,6 @@ namespace MRPAPP.View.Report
             try
             {
                 InitControls();
-
-                DisplayChart();
             }
             catch (Exception ex)
             {
@@ -30,27 +32,40 @@ namespace MRPAPP.View.Report
         }
 
         // 차트 생성 이벤트
-        private void DisplayChart()
+        private void DisplayChart(List<Model.Report> list)
         {
-            double[] ys1 = new double[] { 10.4, 34.6, 22.1, 15.4, 40.0 };
-            double[] ys2 = new double[] { 9.7, 8.3, 2.6, 3.4, 7.7 };
+            int[] schAmounts = list.Select(a => (int)a.SchAmount).ToArray();
+            int[] prcOkAmounts = list.Select(a => (int)a.PrcOKAmount).ToArray();
+            int[] prcFailAmounts = list.Select(a => (int)a.PrcFAILAmount).ToArray();
 
             var series1 = new LiveCharts.Wpf.ColumnSeries
             {
-                Title = "First Val",
-                Values = new LiveCharts.ChartValues<double>(ys1)
+                Title = "계획수량",
+                Values = new LiveCharts.ChartValues<int>(schAmounts),
+                Fill = new SolidColorBrush(Colors.Green),
             };
             var series2 = new LiveCharts.Wpf.ColumnSeries
             {
-                Title = "First Val",
-                Values = new LiveCharts.ChartValues<double>(ys2)
+                Title = "성공수량",
+                Values = new LiveCharts.ChartValues<int>(prcOkAmounts),
+                Fill = new SolidColorBrush(Colors.Blue),
+
+            };
+            var series3 = new LiveCharts.Wpf.ColumnSeries
+            {
+                Title = "실패수량",
+                Values = new LiveCharts.ChartValues<int>(prcFailAmounts),
+                Fill = new SolidColorBrush(Colors.Red),
+
             };
             //차트 할당
             ChtReport.Series.Clear();
             ChtReport.Series.Add(series1);
             ChtReport.Series.Add(series2);
+            ChtReport.Series.Add(series3);
 
-
+            // x축에 해당하는 날짜 가져오기
+            ChtReport.AxisX.First().Labels = list.Select(a => a.PrcDate.ToString("yyyy-MM-dd")).ToList();
         }
 
         private void InitControls()
@@ -68,7 +83,12 @@ namespace MRPAPP.View.Report
         {
             if (IsValidInputs())
             {
-                MessageBox.Show("검색시작!");
+                // Datetime에 null값이 저장될 수 있기때문에 DateTime으로 형변환후 작업
+                var startDate = ((DateTime)DtpStartDate.SelectedDate).ToString("yyyy-MM-dd");
+                var endDate = ((DateTime)DtpEndDate.SelectedDate).ToString("yyyy-MM-dd");
+                var searchResult = Logic.DataAccess.GetReportDatas(startDate, endDate, Commons.PLANTCODE);
+
+                DisplayChart(searchResult);
             }
         }
 
