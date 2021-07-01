@@ -16,7 +16,7 @@
 #### 1. Home
 <p align='left'>
   <a href="https://github.com/WhiteHair-H/MiniProject_SimpleMRP/blob/main/Player%26Picture/Picture/MainMenu.png">
-    <img src="https://github.com/WhiteHair-H/MiniProject_SimpleMRP/blob/main/Player%26Picture/Picture/MainMenu.png " width="40%" height="40%"/>
+    <img src="https://github.com/WhiteHair-H/MiniProject_SimpleMRP/blob/main/Player%26Picture/Picture/MainMenu.png " width="50%" height="50%"/>
   </a>
 </p>
 
