@@ -19,8 +19,14 @@
 #### 2. Setting
 ![Setting](https://github.com/WhiteHair-H/MiniProject_SimpleMRP/blob/main/Player%26Picture/Picture/Setting.png "Setting")
 
-#### 3. Process
+#### 3. Schedule
+![Process](https://github.com/WhiteHair-H/MiniProject_SimpleMRP/blob/main/Player%26Picture/Picture/schedule.png "Process")
+
+#### 4. Process
 ![Process](https://github.com/WhiteHair-H/MiniProject_SimpleMRP/blob/main/Player%26Picture/Picture/Process.png "Process")
+
+#### 5. Report
+![Process](https://github.com/WhiteHair-H/MiniProject_SimpleMRP/blob/main/Player%26Picture/Picture/Report.png "Process")
 
 ## MRPPlayer
 
