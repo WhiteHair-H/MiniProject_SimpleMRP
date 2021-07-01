@@ -156,8 +156,8 @@ namespace MRPAPP.View.Process
 
             LblPrcOKAmount.Content = $"{prcOkAmount} 개";
             LblPrcFAILAmount.Content = $"{prcFAILAmount} 개";
-            LblPrcOKRate.Content = $"{prcOKRate} %";
-            LblPrcFAILRate.Content = $"{prcFAILRate} %";
+            LblPrcOKRate.Content = $"{prcOKRate.ToString("#.##")} %";
+            LblPrcFAILRate.Content = $"{prcFAILRate.ToString("#.##")} %";
         }
 
         // OK와 FAIL를 통한 스톱워치 실행 이벤트 
@@ -301,9 +301,17 @@ namespace MRPAPP.View.Process
         // 자원해제 이벤트
         private void Page_Unloaded(object sender, RoutedEventArgs e)
         {
-            // 자원해제
-            if (client.IsConnected) client.Disconnect();
-            timer.Dispose();
+            try
+            {
+                // 자원해제
+                if (client.IsConnected) client.Disconnect();
+                timer.Dispose();
+            }
+            catch (Exception ex)
+            {
+                Commons.ShowMessageAsync("금일 미일정", "당일 날짜가 존재하지 않습니다");
+            }
+            
         }
     }
 }
