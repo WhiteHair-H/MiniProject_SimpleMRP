@@ -96,6 +96,7 @@ namespace MRPAPP.Logic
             // MRPConnString 존재하지않기때문에 App.config에 삽입
             var connString = ConfigurationManager.ConnectionStrings["MRPConnString"].ToString();
             var list = new List<Report>();
+            var lastObj = new Model.Report(); // 추가 : 최종 Report값 담는 변수
 
             // 가상 Database 데이터 가져오기 
             using (var conn = new SqlConnection(connString))
@@ -135,8 +136,35 @@ namespace MRPAPP.Logic
                         PrcFAILAmount = (int)reader["PrcFAILAmount"]
                     };
                     list.Add(tmp);
+                    lastObj = tmp;
+                }
+
+                // 시작일부터 종료일까지 없는 값 만들어주는 로직
+                var DtStart = DateTime.Parse(startDate);
+                var DtEnd = DateTime.Parse(endDate);
+                var Dtcurrent = DtStart;
+
+                while (Dtcurrent < DtEnd)
+                {
+                    var count = list.Where(c => c.PrcDate.Equals(Dtcurrent)).Count();
+                    if (count == 0)
+                    {
+                        // 새로운 Report(없는 날짜)
+                        var tmp = new Report
+                        {
+                            SchIdx = lastObj.SchIdx,
+                            PlantCode = lastObj.PlantCode,
+                            PrcDate = Dtcurrent,
+                            SchAmount = 0,
+                            PrcOKAmount = 0,
+                            PrcFAILAmount = 0
+                        };
+                        list.Add(tmp);
+                    }
+                    Dtcurrent = Dtcurrent.AddDays(1);
                 }
             }
+            list.Sort((reportA, reportB) => reportA.PrcDate.CompareTo(reportB.PrcDate));
             return list;
         }
     }

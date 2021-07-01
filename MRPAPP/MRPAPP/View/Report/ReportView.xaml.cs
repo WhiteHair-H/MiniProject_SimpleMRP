@@ -68,17 +68,14 @@ namespace MRPAPP.View.Report
             ChtReport.AxisX.First().Labels = list.Select(a => a.PrcDate.ToString("yyyy-MM-dd")).ToList();
         }
 
+        // 기본세팅 일주일 단위 이벤트
         private void InitControls()
         {
             DtpStartDate.SelectedDate = DateTime.Now.AddDays(-7);
             DtpEndDate.SelectedDate = DateTime.Now;
         }
 
-        private void BtnEditMyAccount_Click(object sender, RoutedEventArgs e)
-        {
-            // NavigationService.Navigate(new EditAccount()); // 계정정보 수정 화면으로 변경
-        }
-
+        // 날짜검색 이벤트
         private void BtnSearch_Click(object sender, RoutedEventArgs e)
         {
             if (IsValidInputs())
